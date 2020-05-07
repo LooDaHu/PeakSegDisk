@@ -1,0 +1,26 @@
+name: R-benchmark
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore: 
+      - '.github/workflows/**'
+      - 'Rperform_Data/**'
+  pull_request:
+    branches: [ master ]
+    paths-ignore: 
+      - '.github/workflows/**'
+      - 'Rperform_Data/**'
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: r-benchmark
+      uses: LooDaHu/R-benchmark@test
+      with:
+        username: LooDaHu
+        commit: 5
